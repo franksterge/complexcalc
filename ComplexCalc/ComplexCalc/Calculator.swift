@@ -10,4 +10,58 @@ import Foundation
 
 // All your work will go in here
 class Calculator {
+    public func add (lhs: Double, rhs: Double) -> Double {
+        return Double(lhs + rhs)
+    }
+    
+    public func add(_ list: [Double]) -> Double {
+        var result = 0.0
+        for i in list {
+            result += i
+        }
+        return result
+    }
+    
+    public func add (lhs: (Double, Double), rhs: (Double, Double)) -> (Double, Double){
+        return (lhs.0 + rhs.0, lhs.1 + rhs.1)
+    }
+    public func subtract (lhs: Double, rhs: Double) -> Double {
+        return Double(lhs - rhs)
+    }
+    
+    public func multiply (lhs: Double, rhs: Double) -> Double {
+        return Double(lhs * rhs)
+    }
+    
+    public func multiply (_ list: [Double]) -> Double {
+        var result: Double
+        switch list.count {
+        case 0:
+             result = 0.0
+        default:
+            result = list[0]
+            for i in 1...list.count - 1 {
+                result = multiply(lhs: result, rhs: list[i])
+            }
+        }
+        return result
+    }
+    
+    public func divide (lhs: Double, rhs: Double) -> Double {
+        switch rhs {
+        case 0:
+            return 0;
+        default :
+            return Double (lhs / rhs);
+        }
+    }
+    
+    public func count (_ list: [Double]) -> Int {
+        return list.count
+    }
+    
+    public func avg (_ list: [Double]) -> Double {
+        return add(list) / Double(list.count)
+    }
 }
+
